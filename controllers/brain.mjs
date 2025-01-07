@@ -43,4 +43,27 @@ const getEntries = async (req, res) => {
     res.send(err).status(400);
   }
 };
-export default { seed, getEntries };
+
+const addEntry = async (req, res) => {
+  console.log(`body: `, req.body);
+  try {
+    const createdEntry = await Brain.create(req.body);
+    console.log("createdEntry", createdEntry);
+    res.status(200).json(createdEntry);
+    // console.log('in addEntry');
+    // res.send('added').status(400)
+  } catch (err) {
+    res.send(err).status(400);
+  }
+};
+
+const deleteEntry = async (req, res) => {
+  console.log(`deleting`);
+  try {
+    const deletedEntry = await Brain.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedEntry);
+  } catch (err) {
+    res.send(err).status(400);
+  }
+};
+export default { seed, getEntries, addEntry, deleteEntry };
