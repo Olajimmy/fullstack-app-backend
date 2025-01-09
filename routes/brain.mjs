@@ -29,6 +29,9 @@ router.delete("/:id", entryController.deleteEntry);
 //todo: get individual entry
 //todo: get based on criteria
 //todo: edit
+
+//edit route
+router.put("/:id", entryController.editEntry);
 //todo: delete
 
 export default router;

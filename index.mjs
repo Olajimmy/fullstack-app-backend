@@ -6,6 +6,7 @@ import brainEntries from "./routes/brain.mjs";
 import calendarEntries from "./routes/entry.mjs";
 import todoEntries from "./routes/todo.mjs";
 import cors from "cors";
+import users from "./routes/user.mjs";
 
 //
 dotenv.config();
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 app.use("/api/braindump", brainEntries);
 app.use("/api/calendar", calendarEntries);
 app.use("/api/todo", todoEntries);
+app.use("/api/users", users);
 //
 //default, catch all routes
 app.get("/*", (req, res) => {

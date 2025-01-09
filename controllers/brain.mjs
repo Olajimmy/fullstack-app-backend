@@ -66,4 +66,14 @@ const deleteEntry = async (req, res) => {
     res.send(err).status(400);
   }
 };
-export default { seed, getEntries, addEntry, deleteEntry };
+
+const editEntry = async (req, res) => {
+  console.log("editing");
+  try {
+    const editedEntry = await Brain.findByIdAndUpdate(req.params.id);
+    res.status(200).json(editedEntry);
+  } catch (err) {
+    res.send(err).status(400);
+  }
+};
+export default { seed, getEntries, addEntry, deleteEntry, editEntry };
